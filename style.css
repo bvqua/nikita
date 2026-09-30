@@ -1,0 +1,85 @@
+:root {
+  --night: #1f2535;
+  --paper: #becae4;
+  --ink: #101111;
+  --rose: #050505;
+  --rose-dark: #0f0f0f;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background: var(--night);
+  color: var(--ink);
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  line-height: 1.75;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.flap {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 62%;
+  background: #c3c9dc;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.seal {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  background: var(--rose);
+  box-shadow: inset 0 0 0 4px var(--rose-dark);
+}
+
+.hint {
+  position: absolute;
+  inset: auto 0 14px 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.letter {
+  width: min(800px, 100%);
+  background: var(--paper);
+  padding: clamp(1.75rem, 6vw, 4rem);
+  border-radius: 3px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  animation: unfold 0.9s ease both;
+  text-align: left;
+}
+
+.letter h1 {
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--rose-dark);
+}
+
+.letter p { margin: 0 0 3rem; }
+.letter p:last-child { margin-bottom: 0; }
+
+@keyframes unfold {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter { animation: none; }
+  .envelope { transition: none; }
+}
